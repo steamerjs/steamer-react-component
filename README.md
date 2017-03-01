@@ -14,6 +14,18 @@
 * 在 `README.md` 上写好你的组件文档
 * `npm publish` 发布你的组件
 
+### 逻辑组件注意事项
+
+逻辑组件开发时，可能并不需要具体 `demo`，这时，测试的一些文件（非测试用例文件），可放在 `example` 或者 `__tests__` 中。
+
+由于脚手架自带 `babel-jest` 依赖，运行测试的时候会帮你自动编译好源码。因此可以在测试的时候直接引用 `src` 中的源码，测试结果与引用 `dist` 中的生产环境代码无二。
+
+- 示例：[pure-render-deepCompare-decorator](https://github.com/SteamerTeam/pure-render-deepCompare-decorator)
+
+### UI组件注意事项
+
+UI组件开发的时候，往往需要同时开发具体的 `demo` 供测试，或者调试。这时候，使用后面会说到的 `npm start` 等开发命令，能够启动一个服务器，帮助你通过页面进行调试或测试。如果你想查看具体开发时候的代码，可以使用 `npm run start.code`。
+
 
 ## 命令规范
 
