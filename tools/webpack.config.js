@@ -31,7 +31,7 @@ var webpackConfig = {
                         "transform-decorators-legacy"
                     ],
                     "presets": [
-                        ["es2015", {"loose": true}], 
+                        ["es2015", {"loose": true, "modules": false}], 
                         "react",
                         "stage-0"
                     ]
