@@ -54,6 +54,10 @@ npm run lint
 ## 目录规范
 
 ```javascript
+__tests__ -- 测试用例
+|
+example -- 真实demo
+|
 dist -- 开发者使用代码
 |
 src -- 源代码
