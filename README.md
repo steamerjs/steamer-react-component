@@ -26,6 +26,10 @@
 
 UI组件开发的时候，往往需要同时开发具体的 `demo` 供测试，或者调试。这时候，使用后面会说到的 `npm start` 等开发命令，能够启动一个服务器，帮助你通过页面进行调试或测试。如果你想查看具体开发时候的代码，可以使用 `npm run start.code`。
 
+对UI组件进行测试的时候，除了[jest](https://github.com/facebook/jest)之外，还需要到 `Airbnb` 开发的 [enzyme](https://github.com/airbnb/enzyme)，方便进行 `react` 组件的渲染、搜索等，可能还需要到 [jsdom](https://github.com/tmpvar/jsdom) 和[jest-environment-jsdom](https://github.com/facebook/jest/tree/master/packages/jest-environment-jsdom) 帮你注入全局 `window`。除此之外，你可能想不测某式内容，例如样式等，你可以在 __mocks__ 文件夹中，放一个 `styleMock.js` 文件，用于虚构样式文件。详细可以参考下面的例子。
+
+- 示例：[react-list-scroll](https://github.com/SteamerTeam/react-list-scroll)
+
 
 ## 命令规范
 
