@@ -12,7 +12,9 @@
 * 如果想查看具体生成的 `demo` 代码，可以使用 `npm run start.code`
 * 开发完毕后，请使用 `npm run dist` 生成可供使用的生产代码
 ```javascript
-注意，目前 npm run dist 其实是运行了 npm run babel，表示是直接使用 babel 帮助你进行编译。如果你想要使用 webpack帮你编译并且打包，尤其是需要将组件编译成 umd 模式，请将 npm run dist 的命令内容改为 npm run webpack。
+注意，目前 npm run dist 其实是运行了 npm run babel，表示是直接使用 babel 帮助你进行编译。
+
+如果你想要使用 webpack帮你编译并且打包，尤其是需要将组件编译成 umd 模式，请将 npm run dist 的命令内容改为 npm run webpack。
 
 另外，在在使用 webpack编译打包的时候，有时引用库你并不想打包到你的组件里面，那么，请在 webpack.babel.js 配置文件里设置 external 参数，这样 webapck 就不会帮你将这些 external 的库打包进组件里面。
 ```
