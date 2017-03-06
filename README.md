@@ -16,7 +16,9 @@
 
 如果你想要使用 webpack帮你编译并且打包，尤其是需要将组件编译成 umd 模式，请将 npm run dist 的命令内容改为 npm run webpack。
 
-另外，在在使用 webpack编译打包的时候，有时引用库你并不想打包到你的组件里面，那么，请在 webpack.babel.js 配置文件里设置 external 参数，这样 webapck 就不会帮你将这些 external 的库打包进组件里面。
+另外，在在使用 webpack编译打包的时候，有时引用库你并不想打包到你的组件里面。
+
+那么，请在 webpack.babel.js 配置文件里设置 external 参数，这样 webapck 就不会帮你将这些 external 的库打包进组件里面。
 ```
 * 在 `README.md` 上写好你的组件文档
 * `npm publish` 发布你的组件
