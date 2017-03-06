@@ -16,7 +16,7 @@ var config = {
         path: {
             src: path.resolve(__basename, "src"),
             dev: path.resolve(__basename, "dev"),
-            build: path.resolve(__basename, "lib"),
+            dist: path.resolve(__basename, "dist"),
             example: path.resolve(__basename, "example"),
         },
     },

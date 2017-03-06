@@ -6,7 +6,7 @@ var webpack = require('webpack');
 
     var fs = require('fs');
 
-var compiler = webpack(require('./webpack.config'));
+var compiler = webpack(require('./webpack.example'));
 compiler.watch(
     {
         aggregateTimeout: 300, // wait so long for more changes

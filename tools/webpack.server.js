@@ -6,7 +6,7 @@ var webpackHotMiddleware = require("webpack-hot-middleware");
 var proxy = require('http-proxy-middleware');
 var path = require('path');
 
-var webpackConfig = require("./webpack.config.js"),
+var webpackConfig = require("./webpack.example.js"),
 	config = require("../config/project");
 var port = config.port;
 

@@ -8,7 +8,9 @@
     "start.code": "node ./tools/start.code.js",
     "dev": "npm start",
     "dev.code": "npm run start.code",
-    "dist": "babel src --out-dir dist --copy-files",
+    "dist": "npm run babel",
+    "webpack": "webpack --config ./tools/webpack.babel.js",
+    "babel": "babel src --out-dir dist --copy-files",
     "prepublish": "npm run dist",
     "test": "jest --coverage",
     "lint": "eslint src/**/*.js && stylelint src/**/*.less"
