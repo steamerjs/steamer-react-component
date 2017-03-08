@@ -8,7 +8,7 @@ var config = require('../config/project'),
     configWebpack = config.webpack;
 
 var Clean = require('clean-webpack-plugin'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin-steamer");
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var webpackConfig = {
     entry: {
