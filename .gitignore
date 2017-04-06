@@ -9,3 +9,4 @@ yarn-error.log
 jest
 dist
 coverage
+dev

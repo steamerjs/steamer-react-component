@@ -9,7 +9,7 @@ var config = require('../config/project'),
 
 var Clean = require('clean-webpack-plugin'),
     HtmlResWebpackPlugin = require('html-res-webpack-plugin'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin-steamer");
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var webpackConfig = {
     entry: {
@@ -44,7 +44,6 @@ var webpackConfig = {
                     fallback: "style-loader",
                     use: "css-loader?-autoprefixer&localIdentName=[name]-[local]-[hash:base64:5]?postcss-loader!less-loader?root=" + path.resolve('src')
                 }),
-                include: [configWebpack.path.example],
             },
             {
                 test: /\.html$/,
@@ -55,13 +54,12 @@ var webpackConfig = {
                 loaders: [
                     "url-loader?limit=1000&name=img/[path]/[name].[ext]",
                 ],
-                // include: path.resolve(configWebpack.path.src)
             },
         ]
     },
     resolve: {
         modules:['node_modules', configWebpack.path.src],
-        extensions: [".js", ".jsx", ".es6", "css", "scss", "less", "png", "jpg", "jpeg", "ico"],
+        extensions: [".js", ".jsx", ".es6", ".css", ".scss", ".less", ".png", ".jpg", ".jpeg", ".ico"],
         alias: {}
     },
     plugins: [
@@ -70,8 +68,10 @@ var webpackConfig = {
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin({
             filename:  (getPath) => {
-                return getPath('css/[name].css').replace('css/js', 'css');
-            }
+              return getPath('css/[name].css').replace('css/js', 'css');
+            },
+            allChunks: true,
+            disable: true,
         }),
         new webpack.NoEmitOnErrorsPlugin()
     ],

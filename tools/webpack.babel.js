@@ -8,7 +8,7 @@ var config = require('../config/project'),
     configWebpack = config.webpack;
 
 var Clean = require('clean-webpack-plugin'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin-steamer");
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var webpackConfig = {
     entry: {
@@ -43,7 +43,6 @@ var webpackConfig = {
                     fallback: "style-loader",
                     use: "css-loader?-autoprefixer&localIdentName=[name]-[local]-[hash:base64:5]?postcss-loader!less-loader?root=" + path.resolve('src')
                 }),
-                include: [configWebpack.path.src],
             },
             {
                 test: /\.html$/,
@@ -54,13 +53,12 @@ var webpackConfig = {
                 loaders: [
                     "url-loader?limit=1000&name=img/[path]/[name].[ext]",
                 ],
-                include: path.resolve(configWebpack.path.src)
             },
         ]
     },
     resolve: {
         modules:['node_modules', configWebpack.path.src],
-        extensions: [".js", ".jsx", ".es6", "css", "scss", "less", "png", "jpg", "jpeg", "ico"],
+        extensions: [".js", ".jsx", ".es6", ".css", ".scss", ".less", ".png", ".jpg", ".jpeg", ".ico"],
         alias: {}
     },
     plugins: [
@@ -68,9 +66,11 @@ var webpackConfig = {
         new Clean([path.join(configWebpack.path.dist)], {root: path.resolve()}),
         new ExtractTextPlugin({
             filename:  (getPath) => {
-                return getPath('css/[name].css').replace('css/js', 'css');
-            }
-        })
+              return getPath('css/[name].css').replace('css/js', 'css');
+            },
+            allChunks: true,
+            disable: false,
+        }),
     ],
     // 是否添加source-map，可去掉注释开启
     // devtool: "#inline-source-map",
