@@ -18,6 +18,7 @@ var config = {
             dev: path.resolve(__basename, "dev"),
             dist: path.resolve(__basename, "dist"),
             example: path.resolve(__basename, "example"),
+            test: path.resolve(__basename, "test")
         },
     },
     webserver: steamerConfig.webserver, // 
