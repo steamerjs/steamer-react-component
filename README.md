@@ -72,6 +72,11 @@ UI组件开发的时候，往往需要同时开发具体的 `demo` 供测试，�
 
 - 示例：[react-list-scroll](https://github.com/SteamerTeam/react-list-scroll)
 
+## Karma 测试
+```shell
+npm run karma
+```
+
 
 ## 命令规范
 
