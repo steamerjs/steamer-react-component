@@ -2,6 +2,39 @@
 
 用于开发 `react` 组件的脚手架
 
+## 如何使用
+
+* 直接从github clone 下来
+* 使用[steamerjs](https://github.com/SteamerTeam/steamerjs)安装
+
+```javascript
+// 安装依赖
+npm i
+
+// 开发
+npm start 或 npm run dev
+// 打开链接，查看 demo
+localhost:9000
+
+// 查看开发环境源码
+npm run source
+
+// 代码规范安装
+npm i -g eslint
+npm i -g stylelint
+// 代码规范扫描
+npm lint
+
+// 测试
+npm run test
+
+// 生产代码生成
+// 使用 babel 编译
+npm run dist
+// 使用 webapck 编译
+npm run webpack
+
+```
 
 ## 开发组件规范
 
