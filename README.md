@@ -80,9 +80,13 @@ config -- 项目配置
 |      |
 |      |
 tools  -- 构建工具
-|      |
-|——————start.js -- 开发环境执行命令
-|——————start.code.js -- 开发环境生成编译后代码命令
 |
+|
+|——————script.js -- 开发环境的执行命令
+|——————server.js -- 开发环境服务器
+|——————webpack.babel.js -- 使用 webpack 进行编译的配置
+|——————webpack.example.js -- 开发环境demo配置
+|
+.babelrc 使用 babel 进行编译的配置
 package.json
 ```
