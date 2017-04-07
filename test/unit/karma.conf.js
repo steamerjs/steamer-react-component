@@ -4,15 +4,15 @@ var webpackTestConf = require('../../tools/webpack.babel.js');
 
 // 给webpack基础配置增加一些针对测试环境的配置
 webpackTestConf = Object.assign(webpackTestConf, {
-      // karma需要开启inline source map
-      devtool: "#inline-source-map",
-      // 针对enzyme的issue https://github.com/airbnb/enzyme/issues/503
-      externals: {
-          'cheerio': 'window',
-          'react/addons': true,
-          'react/lib/ExecutionEnvironment': true,
-          'react/lib/ReactContext': true
-      }
+  // karma需要开启inline source map
+  devtool: "#inline-source-map",
+  // 针对enzyme的issue https://github.com/airbnb/enzyme/issues/503
+  externals: {
+    'cheerio': 'window',
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  }
 })
 module.exports = function (config) {
   config.set({
@@ -21,15 +21,11 @@ module.exports = function (config) {
     basePath: '',
 
     // 使用的测试框架 可用的框架: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: [
-      'mocha'
-    ],
+    frameworks: ['mocha'],
 
     // Karma的入口文件
-    files: [
-        //{pattern: path.join(__basename, 'node_modules/chai/chai.js'),include: true},
-      './index.js'
-      ],
+    files: [//{pattern: path.join(__basename, 'node_modules/chai/chai.js'),include: true},
+      './index.js'],
 
     // 需排除的文件
     exclude: [],
@@ -52,7 +48,7 @@ module.exports = function (config) {
       'mocha', 'coverage'
     ],
 
-    // mocha报告插件配置 
+    // mocha报告插件配置
     mochaReporter: {
       showDiff: true
     },
