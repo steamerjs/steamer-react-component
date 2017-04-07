@@ -1,6 +1,19 @@
 // Karma configuration Generated on Thu Mar 30 2017 20:56:56 GMT+0800 (中国标准时间)
 
-var webpackTestConf = require('../../tools/webpack.test.conf');
+var webpackTestConf = require('../../tools/webpack.babel.js');
+
+// 给webpack基础配置增加一些针对测试环境的配置
+webpackTestConf = Object.assign(webpackTestConf, {
+      // karma需要开启inline source map
+      devtool: "#inline-source-map",
+      // 针对enzyme的issue https://github.com/airbnb/enzyme/issues/503
+      externals: {
+          'cheerio': 'window',
+          'react/addons': true,
+          'react/lib/ExecutionEnvironment': true,
+          'react/lib/ReactContext': true
+      }
+})
 module.exports = function (config) {
   config.set({
 
@@ -36,8 +49,13 @@ module.exports = function (config) {
     // 测试结果报告，覆盖率报告如有需要在这里配置 可用的报告插件:
     // https://npmjs.org/browse/keyword/karma-reporter
     reporters: [
-      'progress', 'coverage'
+      'mocha', 'coverage'
     ],
+
+    // mocha报告插件配置 
+    mochaReporter: {
+      showDiff: true
+    },
 
     // 覆盖率报告插件配置
     coverageReporter: {

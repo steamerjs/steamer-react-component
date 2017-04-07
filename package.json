@@ -11,7 +11,7 @@
     "babel": "babel src --out-dir dist --copy-files",
     "webpack": "webpack --config ./tools/webpack.babel.js",
     "test": "jest --coverage",
-    "karma": "cross-env BABEL_ENV=test node ./tools/karma.js",
+    "karma": "cross-env BABEL_ENV=test node ./tools/script.js --mode=test",
     "lint": "eslint src/**/*.js && stylelint src/**/*.less",
     "prepublish": "npm run dist"
   },
@@ -69,6 +69,7 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
     "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.3",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.30",
