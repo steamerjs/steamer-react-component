@@ -6,7 +6,8 @@ var config = require('../config/project'),
 
 karma.start({
     configFile: path.join(configWebpack.path.test, '/unit/karma.conf.js'),
-    singleRun: false
+    singleRun: true
 }, function(){
+    console.log("karma test done!");
     opn(path.join(configWebpack.path.test,'unit/coverage/lcov-report/index.html'));
 })

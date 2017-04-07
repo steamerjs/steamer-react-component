@@ -14,7 +14,7 @@ module.exports = function (config) {
 
     // Karma的入口文件
     files: [
-        {pattern: path.join(__basename, 'node_modules/chai/chai.js'),include: true},
+        //{pattern: path.join(__basename, 'node_modules/chai/chai.js'),include: true},
       './index.js'
       ],
 
@@ -74,6 +74,6 @@ module.exports = function (config) {
     ],
 
     // 持续集成模式 如果是true，Karma只会运行一次并退出
-    singleRun: false
+    singleRun: true
   })
 }
