@@ -1,4 +1,4 @@
-require('./index.less');
+//require('./index.less');
 
 import React, { Component } from 'react';
 

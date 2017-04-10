@@ -1,4 +1,4 @@
-import Hello from 'index';
+import Hello from '../../../src/index.js';
 import React from 'react';
 import { expect } from 'chai';
 import { mount, shallow } from 'enzyme';

@@ -75,7 +75,7 @@ UI组件开发的时候，往往需要同时开发具体的 `demo` 供测试，�
 ## Karma 测试规范
 
 编写单元测试时，请针对每个组件在`test/unit/specs`中编写对应的`[name].spec.js`
-steamer会自动运行Karma的服务器并进行代码测试，测试结果会以mocha-reporter形式展现，代码覆盖率报告会在浏览器中自动打开
+steamer会自动运行Karma自有的webpack server并进行代码测试，测试结果会以mocha-reporter形式展现，代码覆盖率报告会在浏览器中自动打开
 
 运行测试
 ```shell

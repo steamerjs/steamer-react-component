@@ -10,8 +10,8 @@
     "dist": "npm run babel",
     "babel": "babel src --out-dir dist --copy-files",
     "webpack": "webpack --config ./tools/webpack.babel.js",
-    "test": "jest --coverage",
-    "karma": "cross-env BABEL_ENV=test node ./tools/script.js --mode=test",
+    "jest": "jest --coverage",
+    "karma": "cross-env BABEL_ENV=test node ./tools/script.js --mode=karma",
     "lint": "eslint src/**/*.js && stylelint src/**/*.less",
     "prepublish": "npm run dist"
   },
@@ -98,5 +98,8 @@
   },
   "engines": {
     "node": ">=5.0.0"
+  },
+  "jest": {
+    "transform": {".*": "./tools/jest-preprocessor"}
   }
 }

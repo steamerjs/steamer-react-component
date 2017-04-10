@@ -48,7 +48,7 @@ else if (mode === 'source'){
 	    }
 	});
 }
-else if (mode === 'test'){
+else if (mode === 'karma'){
 	karma.start({
 		configFile: path.join(configWebpack.path.test, '/unit/karma.conf.js'),
 		singleRun: true
