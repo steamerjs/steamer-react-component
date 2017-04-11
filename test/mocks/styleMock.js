@@ -1,1 +1,3 @@
-// mock style 
+// mocks/styleMock.js
+
+module.exports = {};
