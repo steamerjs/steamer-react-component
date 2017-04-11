@@ -48,3 +48,4 @@ npm run webpack
 
 ## 文章参考
 * [从工程化角度讨论如何快速构建可靠React组件](https://github.com/lcxfs1991/blog/issues/18)
+* [聊一聊前端自动化测试](https://github.com/tmallfe/tmallfe.github.io/issues/37)

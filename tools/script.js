@@ -48,15 +48,17 @@ else if (mode === 'production' || mode === 'source'){
 	    }
 	});
 }
-else if (mode === 'karma'){
+else if (mode === 'karma') {
+	process.env.NODE_ENV = "production";
+	
 	var config = require('../config/project'),
     	configWebpack = config.webpack;
     
 	karma.start({
-		configFile: path.join(configWebpack.path.test, '/karma/karma.conf.js'),
+		configFile: path.join(configWebpack.path.test, '/unit/karma.conf.js'),
 		singleRun: true
 	}, function(){
 		console.log("karma test done!");
-		opn(path.join(configWebpack.path.test,'karma/coverage/lcov-report/index.html'));
+		opn(path.join(configWebpack.path.test,'unit/coverage/lcov-report/index.html'));
 	})
 }

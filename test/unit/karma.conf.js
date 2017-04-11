@@ -1,6 +1,6 @@
 // Karma configuration Generated on Thu Mar 30 2017 20:56:56 GMT+0800 (中国标准时间)
 
-var webpackTestConf = require('../../tools/webpack.babel.js');
+var webpackTestConf = require('../../tools/webpack.base.js');
 
 // 给webpack基础配置增加一些针对测试环境的配置
 webpackTestConf = Object.assign(webpackTestConf, {
@@ -24,8 +24,10 @@ module.exports = function (config) {
     frameworks: ['mocha'],
 
     // Karma的入口文件
-    files: [//{pattern: path.join(__basename, 'node_modules/chai/chai.js'),include: true},
-      './index.js'],
+    files: [
+        //{pattern: path.join(__basename, 'node_modules/chai/chai.js'),include: true},
+        './index.js'
+    ],
 
     // 需排除的文件
     exclude: [],
