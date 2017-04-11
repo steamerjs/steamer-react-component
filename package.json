@@ -1,6 +1,6 @@
 {
   "name": "steamer-react-component",
-  "version": "1.1.0",
+  "version": "2.0.0-beta.1",
   "description": "react component development starter kit",
   "main": "dist/index.js",
   "scripts": {
@@ -8,8 +8,9 @@
     "dev": "node ./tools/script.js --mode=development",
     "source": "node ./tools/script.js --mode=source",
     "dist": "npm run babel",
+    "test": "npm run jest",
     "babel": "babel src --out-dir dist --copy-files",
-    "webpack": "webpack --config ./tools/webpack.babel.js",
+    "webpack": "node ./tools/script.js --mode=production",
     "jest": "jest --coverage",
     "karma": "cross-env BABEL_ENV=test node ./tools/script.js --mode=karma",
     "lint": "eslint src/**/*.js && stylelint src/**/*.less",
@@ -32,9 +33,7 @@
     "url": "https://github.com/SteamerTeam/steamer-react-component/issues"
   },
   "homepage": "https://github.com/SteamerTeam/steamer-react-component#readme",
-  "dependencies": {
-    "karma": "^1.6.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "babel-cli": "^6.24.0",
@@ -42,7 +41,7 @@
     "babel-eslint": "^7.2.1",
     "babel-istanbul": "^0.12.2",
     "babel-jest": "^19.0.0",
-    "babel-loader": "^6.3.2",
+    "babel-loader": "^7.0.0-beta.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
@@ -56,7 +55,6 @@
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.2",
-    "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "html-loader": "^0.4.5",
     "html-res-webpack-plugin": "^2.0.0",
@@ -79,15 +77,17 @@
     "less-loader": "^4.0.2",
     "mocha": "^3.2.0",
     "mochawesome": "^2.0.4",
+    "npm-install-webpack-plugin-steamer": "^4.0.4",
     "opn": "^4.0.2",
     "postcss-import": "^9.1.0",
     "postcss-loader": "^1.3.3",
-    "preact": "^7.2.0",
-    "react": "^15.4.2",
-    "react-addons-test-utils": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "preact": "^8.1.0",
+    "react": "^15.5.0",
+    "react-addons-test-utils": "^15.5.1",
+    "react-dom": "^15.5.0",
     "react-hot-loader": "^3.0.0-beta.6",
-    "react-test-renderer": "^15.4.2",
+    "react-test-renderer": "^15.5.4",
+    "regenerator-runtime": "^0.10.3",
     "steamer-webpack-utils": "^1.0.1",
     "style-loader": "^0.16.0",
     "stylelint": "^7.9.0",
@@ -95,7 +95,8 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.2.3",
     "webpack-dev-middleware": "^1.10.1",
-    "webpack-hot-middleware": "^2.17.1"
+    "webpack-hot-middleware": "^2.17.1",
+    "webpack-merge": "^4.1.0"
   },
   "engines": {
     "node": ">=5.0.0"
@@ -103,9 +104,10 @@
   "jest": {
     "moduleFileExtensions": ["js", "jsx"],
     "moduleDirectories": ["node_modules"],
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/__mocks__/fileMock.js",
-      "\\.(css|less)$": "identity-obj-proxy"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMock.js",
+      "\\.(css|less|scss|sass|styl)$": "identity-obj-proxy"
     }
   }
 }

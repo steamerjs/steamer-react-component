@@ -6,9 +6,10 @@ var webpackHotMiddleware = require("webpack-hot-middleware");
 var proxy = require('http-proxy-middleware');
 var path = require('path');
 
-var webpackConfig = require("./webpack.example.js"),
-	config = require("../config/project");
-var port = config.port;
+var webpackConfig = require("./webpack.base.js"),
+	config = require("../config/project"),
+	configWebpack = config.webpack;
+var port = configWebpack.port;
 
 for (var key in webpackConfig.entry) {
 	webpackConfig.entry[key].unshift('webpack-hot-middleware/client');
@@ -33,13 +34,13 @@ app.use(devMiddleWare);
 app.use(hotMiddleWare);
 
 // 前端转发
-app.use(config.route, proxy({target: 'http://localhost:' + port}));
+app.use(configWebpack.route, proxy({target: 'http://127.0.0.1:' + port}));
 
 app.listen(port, function(err) {
 	if (err) {
 		console.error(err);
 	}
 	else {
-		console.info("Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port);
+		console.info("Listening on port %s. Open up http://127.0.0.1:%s/ in your browser.", port, port);
 	}
 });

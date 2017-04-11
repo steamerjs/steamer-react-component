@@ -6,22 +6,22 @@ const utils = require('steamer-webpack-utils'),
 	  opn = require('opn'),
 	  path = require('path');
 var karma = require('karma').server;
-var config = require('../config/project'),
-    configWebpack = config.webpack;
 
 var argv = utils.getArgvs(),
 	npmArgv = utils.getArgvs(JSON.parse(process.env.npm_config_argv || "[]").original),
 	mode = argv.mode;
+
+var isProduction = mode === "production";
 
 if (mode === 'development') {
 	process.env.NODE_ENV = "development";
 
 	require('./server');
 }
-else if (mode === 'source'){
-	process.env.NODE_ENV = "development";
+else if (mode === 'production' || mode === 'source'){
+	process.env.NODE_ENV = isProduction ? "production" : "development";
 
-	var compiler = webpack(require('./webpack.example'));
+	var compiler = webpack(require('./webpack.base'));
 	compiler.run(function(err, stats) {
 	    if (!err) {
 	        const jsonStats = stats.toJson();
@@ -48,7 +48,12 @@ else if (mode === 'source'){
 	    }
 	});
 }
-else if (mode === 'karma'){
+else if (mode === 'karma') {
+	process.env.NODE_ENV = "production";
+	
+	var config = require('../config/project'),
+    	configWebpack = config.webpack;
+    
 	karma.start({
 		configFile: path.join(configWebpack.path.test, '/unit/karma.conf.js'),
 		singleRun: true

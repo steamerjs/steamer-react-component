@@ -1,6 +1,6 @@
-//require('./index.less');
-
 import React, { Component } from 'react';
+
+import './index.less';
 
 class Hello extends Component {
 
