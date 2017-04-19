@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Hello from 'index';
-class Wrapper extends Component {
+
+class Main extends Component {
 
 	constructor(props, context) {
 		super(props, context);
@@ -14,4 +15,4 @@ class Wrapper extends Component {
 	}
 }
 
-export default Wrapper;
+export default Main;
