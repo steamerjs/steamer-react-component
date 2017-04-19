@@ -13,18 +13,15 @@
 npm i
 
 // 开发
-npm start 或 npm run dev
+npm run start 或 npm run dev
 // 打开链接，查看 demo
 localhost:9000
 
 // 查看开发环境源码
 npm run source
 
-// 代码规范安装
-npm i -g eslint
-npm i -g stylelint
 // 代码规范扫描
-npm lint
+npm run lint
 
 // 测试
 // 使用 jest 测试

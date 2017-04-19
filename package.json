@@ -53,6 +53,7 @@
     "enzyme": "^2.8.0",
     "eslint": "^3.19.0",
     "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-flowtype": "^2.31.0",
     "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.2",
     "file-loader": "^0.11.1",
@@ -102,8 +103,13 @@
     "node": ">=5.0.0"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
     "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/mocks/fileMock.js",

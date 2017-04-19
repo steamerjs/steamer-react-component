@@ -18,6 +18,7 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
+        "flowtype",
         "babel",
         "react",
     ],
@@ -34,8 +35,8 @@ module.exports = {
         "no-unused-vars": [1, {"args": "none", "varsIgnorePattern": "React|Preact|Root|h"}],
         "babel/new-cap": [1, {"capIsNew": false}],
         // "babel/object-curly-spacing": 1,
-        "babel/no-await-in-loop": 1,
-        "babel/flow-object-type": 1,
+        "no-await-in-loop": 1,
+        "flowtype/object-type-delimiter": 1,
         "babel/no-invalid-this": 0
     },
     "globals": {
