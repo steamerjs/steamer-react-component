@@ -5,8 +5,8 @@
 
 ## 如何使用
 
+* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/steamerjs/docs/Steamer.html)安装
 * 直接从github clone 下来
-* 使用[steamerjs](https://github.com/SteamerTeam/steamerjs)安装
 
 ```javascript
 // 安装依赖
@@ -39,9 +39,7 @@ npm run webpack
 
 
 ## 详细文档
-* [Componet Standard 组件规范](https://github.com/SteamerTeam/steamer-react-component/wiki/Componet-Standard-%E7%BB%84%E4%BB%B6%E8%A7%84%E8%8C%83)
-* [Basic Configuration 基本配置](https://github.com/SteamerTeam/steamer-react-component/wiki/Basic-Configuration-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE)
-* [Folder Structure 目录结构](https://github.com/SteamerTeam/steamer-react-component/wiki/Folder-Structure-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84)
+[参见文档- 件脚手架](https://steamerjs.github.io/steamerjs/docs/Component-Starterkit.html)
 
 ## 文章参考
 * [从工程化角度讨论如何快速构建可靠React组件](https://github.com/lcxfs1991/blog/issues/18)
