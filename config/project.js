@@ -45,11 +45,6 @@ var config = {
         // ========================= webpack自定义配置 =========================
         // 是否清理生成文件夹
         clean: true,
-        // sourcemap
-        sourceMap: {
-            development: "false",
-            production: false,
-        },
 
         // 预编译器，默认支持css 和 less. sass, scss 和 stylus 由npm-install-webpack-plugin自动安装
         style: [
