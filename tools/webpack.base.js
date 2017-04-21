@@ -62,8 +62,7 @@ var baseConfig = {
         new StylelintWebpackPlugin({
             configFile: path.resolve(__dirname, '../.stylelintrc.js'),
             context: 'inherits from webpack',
-            files: '../src/**/*.@(?(s)?(a|c)ss|less|html)',
-            syntax: 'less',
+            files: '../src/**/*.@(?(s)?(a|c)ss|less|html|vue)',
             failOnError: false,
             lintDirtyModulesOnly: true,                 // 只在改变的时候lint，其他时候跳过
             extractStyleTagsFromHtml: true,
