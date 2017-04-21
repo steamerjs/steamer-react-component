@@ -3,9 +3,9 @@
 用于开发 `react` 组件的脚手架
 
 
-## 如何使用
+## 快速启动
 
-* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/steamerjs/docs/Steamer.html)安装
+* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/steamerjs/docs/How-To-Start.html)安装
 * 直接从github clone 下来
 
 ```javascript
