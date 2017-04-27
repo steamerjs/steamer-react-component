@@ -5,6 +5,7 @@ var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpackHotMiddleware = require("webpack-hot-middleware");
 var proxy = require('http-proxy-middleware');
 var path = require('path');
+var exec = require('child_process').exec;
 
 var webpackConfig = require("./webpack.base.js"),
 	config = require("../config/project"),
@@ -28,6 +29,20 @@ var compiler = webpack(webpackConfig),
 	}),
 	hotMiddleWare = webpackHotMiddleware(compiler);
 
+// 自动打开浏览器
+var hasLaunch = false
+compiler.plugin('done', function() {
+    if (!hasLaunch) {
+        var map = {
+          darwin: 'open',
+          win32: 'start'
+        };
+        var opener = map[process.platform] || 'xdg-open';
+        exec(opener + ' http://127.0.0.1:' + configWebpack.port);
+
+        hasLaunch = true;
+    }
+});
 
 app.use(devMiddleWare);
 

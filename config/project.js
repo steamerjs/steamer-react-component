@@ -95,7 +95,7 @@ config.custom = {
     },
 
     // webpack module
-     getModule: function() {
+    getModule: function() {
 
         var module = {
             rules: []

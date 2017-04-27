@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Hello from 'index';
 
+import './index.less';
+
 class Main extends Component {
 
 	constructor(props, context) {
