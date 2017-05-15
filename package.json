@@ -2,7 +2,7 @@
   "name": "steamer-react-component",
   "version": "2.0.0-beta.1",
   "description": "react component development starter kit",
-  "main": "dist/index.js",
+  "main": "./.steamer/steamer-react-component.js",
   "scripts": {
     "start": "node ./tools/script.js --mode=development",
     "dev": "node ./tools/script.js --mode=development",
@@ -13,8 +13,7 @@
     "webpack": "node ./tools/script.js --mode=production",
     "jest": "jest --coverage --config ./jest.conf.json",
     "karma": "cross-env BABEL_ENV=test node ./tools/script.js --mode=karma",
-    "lint": "eslint src/**/*.js && stylelint src/**/*.less",
-    "prepublish": "npm run dist"
+    "lint": "eslint src/**/*.js && stylelint src/**/*.less"
   },
   "repository": {
     "type": "git",
