@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SteamerTeam/steamer-react-component.git"
+    "url": "git+https://github.com/steamerjs/steamer-react-component.git"
   },
   "keywords": [
     "steamer starterkit",
@@ -28,12 +28,12 @@
     "starter kit",
     "boilerplate"
   ],
-  "author": "SteamerTeam",
+  "author": "steamerjs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SteamerTeam/steamer-react-component/issues"
+    "url": "https://github.com/steamerjs/steamer-react-component/issues"
   },
-  "homepage": "https://github.com/SteamerTeam/steamer-react-component#readme",
+  "homepage": "https://github.com/steamerjs/steamer-react-component#readme",
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.7.7",
