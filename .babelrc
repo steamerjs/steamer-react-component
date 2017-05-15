@@ -4,8 +4,7 @@
 	],
   	"presets": [
         ["es2015", {"loose": true}], 
-        "react",
-        "stage-0"
+        "react"
     ],
 	"env": {
 		"test": {
@@ -15,8 +14,7 @@
 			],
 			"presets": [
 				["es2015", {"loose": true, "modules": false}], 
-				"react",
-				"stage-0"
+				"react"
 			]
 		}
 	}

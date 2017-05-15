@@ -8,6 +8,7 @@ module.exports = {
         ".eslintignore",
         ".stylelintrc.js",
         "postcss.config.js",
+        "jest.conf.json",
         ".gitignore",
         ".babelrc",
         "example",
