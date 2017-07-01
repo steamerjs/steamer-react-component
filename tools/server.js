@@ -49,7 +49,7 @@ app.use(devMiddleWare);
 app.use(hotMiddleWare);
 
 // 前端转发
-app.use(configWebpack.route, proxy({target: 'http://127.0.0.1:' + port}));
+app.use(configWebpack.route, proxy({target: `http://127.0.0.1:${port}`, pathRewrite: {[`^${configWebpack.route}`] : '/'}}));
 
 app.listen(port, function(err) {
 	if (err) {

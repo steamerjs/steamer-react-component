@@ -17,6 +17,23 @@ var srcPath = path.resolve(__basename, "src"),
 
 var HtmlResWebpackPlugin = require('html-res-webpack-plugin');
 
+var entry = isProduction ? 
+        utils.filterJsFileByCmd(utils.getJsEntry({
+            srcPath: path.join(srcPath, "component"), 
+            fileName: "main",
+            extensions: ["js", "jsx"],
+            keyPrefix: "js/",
+            level: 1
+        })) :
+
+        utils.filterJsFileByCmd(utils.getJsEntry({
+            srcPath: path.join(examplePath, "src/page"), 
+            fileName: "main",
+            extensions: ["js", "jsx"],
+            keyPrefix: "",
+            level: 1
+        }));
+
 // ========================= webpack快捷配置 =========================
 // 基本情况下，你只需要关注这里的配置
 var config = {
@@ -68,8 +85,46 @@ var config = {
         },
 
         alias: {
-            
+            'index': path.join(srcPath, "component/index/index"), 
+            'pindex': path.join(srcPath, "component/pindex/index"), 
+            'spin': path.join(srcPath, "component/common/spin"), 
         },
+
+
+        // ========================= webpack entry配置 =========================
+        // 根据约定，自动扫描js entry，约定是src/page/xxx/main.js 或 src/page/xxx/main.jsx
+        /** 
+            获取结果示例
+            {
+                'js/index': [path.join(configWebpack.path.src, "/page/index/main.js")],
+                'js/spa': [path.join(configWebpack.path.src, "/page/spa/main.js")],
+                'js/pindex': [path.join(configWebpack.path.src, "/page/pindex/main.jsx")],
+            }
+         */
+        entry: entry,
+
+        // 自动扫描html，配合html-res-webpack-plugin
+        /**
+            获取结果示例
+            [ 
+                { 
+                    key: 'index',
+                    path: 'path/src/page/index/index.html'
+                },
+                { 
+                    key: 'spa',
+                    path: 'path/src/page/spa/index.html'
+                },
+                { 
+                    key: 'pindex',
+                    path: 'path/src/page/pindex/index.html'
+                } 
+            ]
+         */
+        html: utils.filterHtmlFileByCmd(utils.getHtmlEntry({
+            srcPath: path.join(examplePath, "src/page"),
+            level: 1
+        })),
 
     },
 };
@@ -130,16 +185,39 @@ config.custom = {
         var plugins = [];
 
         if (!isProduction) {
-            plugins.push(new HtmlResWebpackPlugin({
-                mode: "html",
-                filename: "index.html",
-                template: path.join(config.webpack.path.example, "src/index.html"),
-                htmlMinify: null,
-                entryLog: true,
-                templateContent: function(tpl) {
-                    return tpl;
-                }
-            }));
+            config.webpack.html.forEach(function(page, key) {
+                plugins.push(new HtmlResWebpackPlugin({
+                    mode: "html",
+                    filename: page.key + ".html",
+                    template: page.path,
+                    htmlMinify: null,
+                    entryLog: true,
+                    templateContent: function(tpl) {
+                        // if (isProduction) {
+                        //     return tpl;
+                        // }
+
+                        // var regex = new RegExp("<script.*src=[\"|\']*(.+).*?[\"|\']><\/script>", "ig");
+                        // tpl = tpl.replace(regex, function(script, route) {
+                        //     if (!!~script.indexOf('react.js') || !!~script.indexOf('react-dom.js')) {
+                        //         return '';
+                        //     }
+                        //     return script;
+                        // });
+                        return tpl;
+                    }
+                }));
+            }); 
+            // plugins.push(new HtmlResWebpackPlugin({
+            //     mode: "html",
+            //     filename: "index.html",
+            //     template: path.join(config.webpack.path.example, "src/index.html"),
+            //     htmlMinify: null,
+            //     entryLog: true,
+            //     templateContent: function(tpl) {
+            //         return tpl;
+            //     }
+            // }));
         }
         
         return plugins;

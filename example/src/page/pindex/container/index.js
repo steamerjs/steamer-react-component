@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import Hello from 'index';
+/** @jsx h */
+import Preact, { h, Component } from 'preact';
+import Spinner from 'index';
 
 import './index.less';
 
@@ -12,7 +13,7 @@ class Main extends Component {
 	render() {
 
 		return (
-			<Hello></Hello>
+			<Spinner isShow={true}></Spinner>
 		);
 	}
 }
