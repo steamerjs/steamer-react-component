@@ -1,6 +1,6 @@
 {
   "name": "steamer-react-component",
-  "version": "2.0.0-beta.1",
+  "version": "3.0.0-beta.1",
   "description": "react component development starter kit",
   "main": "./.steamer/steamer-react-component.js",
   "scripts": {
