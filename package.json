@@ -1,8 +1,8 @@
 {
-  "name": "steamer-react-component",
-  "version": "3.0.0-beta.1",
+  "name": "react-spin-component",
+  "version": "0.0.1",
   "description": "react component development starter kit",
-  "main": "./.steamer/steamer-react-component.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "node ./tools/script.js --mode=development",
     "dev": "node ./tools/script.js --mode=development",

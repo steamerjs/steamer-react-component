@@ -1,6 +1,5 @@
-/** @jsx h */
-import Preact, { h, Component } from 'preact';
-var Spin = require('spin');
+import React, { Component } from 'react';
+var Spin = require('./spin');
 
 import './index.less';
 

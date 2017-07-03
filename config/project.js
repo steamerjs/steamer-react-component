@@ -17,23 +17,6 @@ var srcPath = path.resolve(__basename, "src"),
 
 var HtmlResWebpackPlugin = require('html-res-webpack-plugin');
 
-var entry = isProduction ? 
-        utils.filterJsFileByCmd(utils.getJsEntry({
-            srcPath: path.join(srcPath, "component"), 
-            fileName: "main",
-            extensions: ["js", "jsx"],
-            keyPrefix: "js/",
-            level: 1
-        })) :
-
-        utils.filterJsFileByCmd(utils.getJsEntry({
-            srcPath: path.join(examplePath, "src/page"), 
-            fileName: "main",
-            extensions: ["js", "jsx"],
-            keyPrefix: "",
-            level: 1
-        }));
-
 // ========================= webpack快捷配置 =========================
 // 基本情况下，你只需要关注这里的配置
 var config = {
@@ -85,9 +68,8 @@ var config = {
         },
 
         alias: {
-            'index': path.join(srcPath, "component/index/index"), 
-            'pindex': path.join(srcPath, "component/pindex/index"), 
-            'spin': path.join(srcPath, "component/common/spin"), 
+            'index': path.join(srcPath, "index"), 
+            'pindex': path.join(srcPath, "pindex"), 
         },
 
 
@@ -101,7 +83,13 @@ var config = {
                 'js/pindex': [path.join(configWebpack.path.src, "/page/pindex/main.jsx")],
             }
          */
-        entry: entry,
+        entry: utils.filterJsFileByCmd(utils.getJsEntry({
+            srcPath: path.join(examplePath, "src/page"), 
+            fileName: "main",
+            extensions: ["js", "jsx"],
+            keyPrefix: "",
+            level: 1
+        })),
 
         // 自动扫描html，配合html-res-webpack-plugin
         /**
