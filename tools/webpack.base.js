@@ -12,8 +12,7 @@ var config = require('../config/project'),
     env = process.env.NODE_ENV,
     isProduction = env === 'production';
 
-var Clean = require('clean-webpack-plugin'),
-    NpmInstallPlugin  = require('npm-install-webpack-plugin-steamer');
+var Clean = require('clean-webpack-plugin');
 
 var baseConfig = {
     entry: configWebpack.entry,
@@ -39,21 +38,13 @@ var baseConfig = {
     },
     resolve: {
         modules:['node_modules', configWebpack.path.src],
-        extensions: [".js", ".jsx", ".es6", ".css", ".scss", ".less", ".png", ".jpg", ".jpeg", ".ico"],
+        extensions: ['.ts', '.tsx', ".js", ".jsx", ".es6", ".css", ".scss", ".less", ".png", ".jpg", ".jpeg", ".ico"],
         alias: {}
     },
     plugins: [
         // remove previous build folder
         new Clean([isProduction ? configWebpack.path.dist : path.join(configWebpack.path.example, "dev")], {root: path.resolve()}),
-        new webpack.NoEmitOnErrorsPlugin(),
-        new NpmInstallPlugin({
-            // Use --save or --save-dev
-            dev: true,
-            // Install missing peerDependencies
-            peerDependencies: true,
-            // Reduce amount of console logging
-            quiet: false,
-        })
+        new webpack.NoEmitOnErrorsPlugin()
     ],
     watch: !isProduction,
 };
@@ -197,6 +188,14 @@ var templateRules = {
     }
 };
 
+// js方言
+var jsRules = {
+    ts: {
+        test: /\.(tsx|ts)$/,
+        loader: 'awesome-typescript-loader'
+    }
+};
+
 configWebpack.style.forEach((style) => {
     style = (style === 'scss') ? 'sass' : style;
     let rule = styleRules[style] || '';
@@ -205,6 +204,12 @@ configWebpack.style.forEach((style) => {
 
 configWebpack.template.forEach((tpl) => {
     let rule = templateRules[tpl] || '';
+    rule && baseConfig.module.rules.push(rule);
+});
+
+configWebpack.js.forEach((tpl) => {
+    let rule = jsRules[tpl] || '';
+
     rule && baseConfig.module.rules.push(rule);
 });
 

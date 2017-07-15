@@ -16,10 +16,22 @@ var isProduction = mode === "production";
 if (mode === 'development') {
 	process.env.NODE_ENV = "development";
 
+	const feature = require('./feature/feature');
+
+	if (feature.installDependency()) {
+		return;
+	}
+
 	require('./server');
 }
 else if (mode === 'production' || mode === 'source'){
 	process.env.NODE_ENV = isProduction ? "production" : "development";
+
+	const feature = require('./feature/feature');
+
+	if (feature.installDependency()) {
+		return;
+	}
 
 	var compiler = webpack(require('./webpack.base'));
 	compiler.run(function(err, stats) {
