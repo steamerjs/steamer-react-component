@@ -74,8 +74,7 @@ var config = {
         },
 
         alias: {
-            'index': path.join(srcPath, "index"), 
-            'pindex': path.join(srcPath, "pindex"), 
+            
         },
 
 
@@ -187,31 +186,10 @@ config.custom = {
                     htmlMinify: null,
                     entryLog: true,
                     templateContent: function(tpl) {
-                        // if (isProduction) {
-                        //     return tpl;
-                        // }
-
-                        // var regex = new RegExp("<script.*src=[\"|\']*(.+).*?[\"|\']><\/script>", "ig");
-                        // tpl = tpl.replace(regex, function(script, route) {
-                        //     if (!!~script.indexOf('react.js') || !!~script.indexOf('react-dom.js')) {
-                        //         return '';
-                        //     }
-                        //     return script;
-                        // });
                         return tpl;
                     }
                 }));
             }); 
-            // plugins.push(new HtmlResWebpackPlugin({
-            //     mode: "html",
-            //     filename: "index.html",
-            //     template: path.join(config.webpack.path.example, "src/index.html"),
-            //     htmlMinify: null,
-            //     entryLog: true,
-            //     templateContent: function(tpl) {
-            //         return tpl;
-            //     }
-            // }));
         }
         
         return plugins;
