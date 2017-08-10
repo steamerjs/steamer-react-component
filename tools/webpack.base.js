@@ -2,6 +2,7 @@
 
 const path = require('path'),
       webpack = require('webpack'),
+      merge = require('lodash.merge'),
       webpackMerge = require('webpack-merge'),
       utils = require('steamer-webpack-utils');
 
@@ -51,114 +52,55 @@ var baseConfig = {
 
 /************* loaders 处理 *************/
 // 样式loader
+var commonLoaders = [
+    {
+        loader: 'cache-loader',
+        options: {
+            // provide a cache directory where cache items should be stored
+            cacheDirectory: path.resolve('.cache')
+        }
+    },
+    {
+        loader: 'style-loader'
+    },
+    {
+        loader: 'css-loader',
+        options: {
+            localIdentName: '[name]-[local]-[hash:base64:5]',
+            module: config.webpack.cssModule,
+            autoprefixer: true,
+            minimize: true
+        }
+    },
+    { 
+        loader: 'postcss-loader' 
+    }
+];
+
+// 样式loader
 var styleRules = {
     css: {
         test: /\.css$/,
         // 单独抽出样式文件
-        use: [
-            {
-                loader: 'style-loader'
-            },
-            {
-                loader: 'css-loader',
-                options: {
-                    localIdentName: '[name]-[local]-[hash:base64:5]',
-                    root: config.webpack.path.src,
-                    module: config.webpack.cssModule,
-                    autoprefixer: true,
-                }
-            },
-            {
-                loader: 'postcss-loader'
-            }
-        ],
+        use: commonLoaders,
     },
     less: {
         test: /\.less$/,
-        use: [
-            {
-                loader: 'style-loader'
-            },
-            {
-                loader: 'css-loader',
-                options: {
-                    localIdentName: '[name]-[local]-[hash:base64:5]',
-                    root: config.webpack.path.src,
-                    module: config.webpack.cssModule,
-                    autoprefixer: true,
-                }
-            },
-            {
-                loader: 'postcss-loader'
-            },
-            {
-                loader:  'less-loader',
-                options: {
-                    paths: [
-                        config.webpack.path.src,
-                        'node_modules'
-                    ]
-                }
-            }
-        ],
+        use: merge([], commonLoaders).concat([{
+            loader: 'less-loader'
+        }]),
     },
     stylus: {
         test: /\.styl$/,
-        use: [
-            {
-                loader: 'style-loader'
-            },
-            {
-                loader: 'css-loader',
-                options: {
-                    localIdentName: '[name]-[local]-[hash:base64:5]',
-                    root: config.webpack.path.src,
-                    module: config.webpack.cssModule,
-                    autoprefixer: true,
-                }
-            },
-            {
-                loader: 'postcss-loader'
-            },
-            { 
-                loader:  'stylus-loader',
-                options: {
-                    paths: [
-                        config.webpack.path.src,
-                        'node_modules'
-                    ]
-                }
-            },
-        ],
+        use: merge([], commonLoaders).concat([{
+            loader: 'stylus-loader'
+        }]),
     },
     sass: {
         test: /\.s(a|c)ss$/,
-        use: [
-            {
-                loader: 'style-loader'
-            },
-            {
-                loader: 'css-loader',
-                options: {
-                    localIdentName: '[name]-[local]-[hash:base64:5]',
-                    root: config.webpack.path.src,
-                    module: config.webpack.cssModule,
-                    autoprefixer: true,
-                }
-            },
-            {
-                loader: 'postcss-loader'
-            },
-            { 
-                loader:  'sass-loader',
-                options: {
-                    includePaths: [
-                        config.webpack.path.src,
-                        'node_modules'
-                    ]
-                }
-            },
-        ],
+        use: merge([], commonLoaders).concat([{
+            loader: 'sass-loader'
+        }]),
     },
 };
 
