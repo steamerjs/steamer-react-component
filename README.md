@@ -5,7 +5,7 @@
 
 ## 快速启动
 
-* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/steamerjs/docs/How-To-Start.html)安装
+* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/docs/How-To-Start.html)安装
 * 或直接从github clone 下来
 
 ### 安装依赖
