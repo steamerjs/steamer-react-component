@@ -6,7 +6,7 @@
 ## 快速启动
 
 * 推荐 >> 使用[steamerjs](https://steamerjs.github.io/steamerjs/docs/How-To-Start.html)安装
-* 直接从github clone 下来
+* 或直接从github clone 下来
 
 ### 安装依赖
 ```bash
@@ -23,12 +23,6 @@ localhost:9000
 ```
 
 > ps：此处在开启开发模式下默认会自动打开浏览器。
-
-### 查看开发环境源码
-
-```bash
-npm run source
-```
 
 ### 代码规范扫描
 

@@ -2,6 +2,7 @@ node_modules
 node_modules.7z
 .DS_Store
 .webpack_cache
+.cache
 .happypack
 npm-debug.log
 yarn-error.log
@@ -15,4 +16,5 @@ postcss.config.js
 config
 tools
 test
+dev
 example
