@@ -52,7 +52,7 @@ npm run dist 或 npm run babel
 npm run webpack
 ```
 
-> ps：关于两种测试方式和两种编译方式的区别可查看[这里](https://steamerjs.github.io/steamerjs/docs/Componet-Standard.html#两种编译与两种测试方式)。
+> ps：关于两种测试方式和两种编译方式的区别可查看[这里](https://steamerjs.github.io/docs/Componet-Standard.html#两种编译与两种测试方式)。
 
 ## 编写demo
 
@@ -60,7 +60,7 @@ npm run webpack
 
 
 ## 详细文档
-[参见文档 - 组件脚手架](https://steamerjs.github.io/steamerjs/docs/Component-Starterkit.html)
+[参见文档 - 组件脚手架](https://steamerjs.github.io/docs/Component-Starterkit.html)
 
 ## 文章参考
 * [从工程化角度讨论如何快速构建可靠React组件](https://github.com/lcxfs1991/blog/issues/18)
