@@ -11,7 +11,7 @@
 
 npm i -g steamerjs steamer-plugin-kit
 
-npm i -g steamer-simple-component
+npm i -g steamer-react-component
 
 steamer kit
 ```
