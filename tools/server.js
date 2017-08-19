@@ -1,61 +1,56 @@
-var express = require('express');
-var app = express();
-var webpack = require('webpack');
-var webpackDevMiddleware = require("webpack-dev-middleware");
-var webpackHotMiddleware = require("webpack-hot-middleware");
-var proxy = require('http-proxy-middleware');
-var path = require('path');
-var exec = require('child_process').exec;
+const url = require('url');
+	  express = require('express'),
+	  app = express(),
+	  webpack = require('webpack'),
+	  webpackDevMiddleware = require("webpack-dev-middleware"),
+	  webpackHotMiddleware = require("webpack-hot-middleware"),
+	  proxy = require('http-proxy-middleware');
 
 var webpackConfig = require("./webpack.base.js"),
 	config = require("../config/project"),
-	configWebpack = config.webpack;
-var port = configWebpack.port;
+	configWebpack = config.webpack,
+	port = configWebpack.port,
+	route = Array.isArray(configWebpack.route) ? configWebpack.route : [configWebpack.route];
 
-for (var key in webpackConfig.entry) {
-	webpackConfig.entry[key].unshift('webpack-hot-middleware/client');
-	webpackConfig.entry[key].unshift('react-hot-loader/patch');
+function addProtocal(urlString) {
+	if (!!~urlString.indexOf('http:') || !!~urlString.indexOf('https:')) {
+		return urlString;
+	}
+	return 'http:' + urlString;
 }
 
-var compiler = webpack(webpackConfig),
-	devMiddleWare = webpackDevMiddleware(compiler, {
-	    hot: true,
-		historyApiFallback: true,
-		// noInfo: true,
-		stats: { 
-			chunks: false,
-			colors: true 
-		},
-	}),
-	hotMiddleWare = webpackHotMiddleware(compiler);
+var urlObject = url.parse(addProtocal(configWebpack.webserver));
 
-// 自动打开浏览器
-var hasLaunch = false
-compiler.plugin('done', function() {
-    if (!hasLaunch) {
-        var map = {
-          darwin: 'open',
-          win32: 'start'
-        };
-        var opener = map[process.platform] || 'xdg-open';
-        exec(opener + ' http://127.0.0.1:' + configWebpack.port);
+for (var key in webpackConfig.entry) {
+    webpackConfig.entry[key].unshift(`webpack-hot-middleware/client?reload=true&dynamicPublicPath=true&path=__webpack_hmr`);
+    webpackConfig.entry[key].unshift('react-hot-loader/patch');
+}
 
-        hasLaunch = true;
-    }
+var compiler = webpack(webpackConfig);
+app.use(webpackDevMiddleware(compiler, {
+	noInfo: true,
+	stats: { 
+		colors: true 
+	},
+	publicPath: configWebpack.webserver
+}));
+
+app.use(webpackHotMiddleware(compiler, {
+    // 这里和上面的client配合，可以修正 webpack_hmr 的路径为项目路径的子路径，而不是直接成为 host 子路径（从publicPath开始，而不是根开始）
+    // https://github.com/glenjamin/webpack-hot-middleware/issues/24
+    path: `${urlObject.path}__webpack_hmr`
+}));
+
+// 静态资源转发
+route.forEach((rt) => {
+	app.use(rt, proxy({target: `http://127.0.0.1:${port}`, pathRewrite: {[`^${rt}`] : '/'}}));
 });
-
-app.use(devMiddleWare);
-
-app.use(hotMiddleWare);
-
-// 前端转发
-app.use(configWebpack.route, proxy({target: `http://127.0.0.1:${port}`, pathRewrite: {[`^${configWebpack.route}`] : '/'}}));
 
 app.listen(port, function(err) {
 	if (err) {
 		console.error(err);
 	}
 	else {
-		console.info("Listening on port %s. Open up http://127.0.0.1:%s/ in your browser.", port, port);
+		console.info("Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port);
 	}
 });
