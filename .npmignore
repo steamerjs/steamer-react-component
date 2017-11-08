@@ -6,15 +6,4 @@ node_modules.7z
 .happypack
 npm-debug.log
 yarn-error.log
-jest
 coverage
-.eslintrc.js
-.stylelintrc.js
-jest.conf.json
-postcss.config.js
-.babelrc
-config
-tools
-test
-dev
-example

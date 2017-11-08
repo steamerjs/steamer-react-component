@@ -8,5 +8,5 @@ npm-debug.log
 yarn-error.log
 jest
 dist
-coverage
+test/**/coverage
 dev

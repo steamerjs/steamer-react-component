@@ -12,6 +12,7 @@ module.exports = {
         ".gitignore",
         ".babelrc",
         "example",
+        ".editorconfig"
     ],
     options: [
         {

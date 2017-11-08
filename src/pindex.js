@@ -1,6 +1,6 @@
 /** @jsx h */
 import Preact, { h, Component } from 'preact';
-var Spin = require('./spin');
+import Spin from './spin';
 
 import './index.less';
 
@@ -8,12 +8,12 @@ export default class Spinner extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			
+
 		};
 	}
 
 	componentWillMount() {
-		
+
 	}
 
 	componentDidMount() {

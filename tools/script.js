@@ -4,9 +4,8 @@ const utils = require('steamer-webpack-utils'),
 	  webpack = require('webpack'),
 	  opn = require('opn'),
 	  fs = require('fs'),
-	  path = require('path');
-
-var karma = require('karma').server;
+      path = require('path'),
+      karmaServer = require('karma').Server;
 
 var isProduction = process.env.NODE_ENV === 'production',
 	isKarma = process.env.KARMA_ENV === 'karma';
@@ -18,19 +17,20 @@ if (feature.installDependency()) {
 }
 
 
-if (isKarma) {	
-	var config = require('../config/project'),
+if (isKarma) {
+	let config = require('../config/project'),
     	configWebpack = config.webpack;
-    
-	karma.start({
-		configFile: path.join(configWebpack.path.test, '/unit/karma.conf.js'),
-		singleRun: true
-	}, function(){
-		console.log("karma test done!");
-		opn(path.join(configWebpack.path.test,'unit/coverage/lcov-report/index.html'));
-	});
+
+    let server = new karmaServer({
+        configFile: path.join(configWebpack.path.test, '/unit/karma.conf.js'),
+        singleRun: true
+    }, function() {
+        console.log('karma test done!');
+        // opn(path.join(configWebpack.path.test, 'unit/coverage/lcov-report/index.html'));
+    });
+    server.start();
 }
-else if (!isProduction) {	
+else if (!isProduction) {
 	require('./server');
 }
 else if (isProduction) {
@@ -45,7 +45,7 @@ function compilerRun(config) {
 	        // const jsonStats = stats.toJson();
 	        // print asset stats
 	        // fs.writeFileSync("stats.txt", JSON.stringify(jsonStats, " " , 4))
-	        
+
 	        console.log(stats.toString({
 	            assets: true,
 		        cached: true,

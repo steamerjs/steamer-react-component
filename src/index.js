@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-let Spin = require('./spin');
+import Spin from './spin';
 
 import './index.less';
 
@@ -43,8 +43,6 @@ export default class Spinner extends Component {
     }
 
     render() {
-        console.log('render spinner');
-
         let isShow = this.props.isShow || false;
         let spinStyle = {
             display: (isShow) ? 'block' : 'none'

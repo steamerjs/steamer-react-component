@@ -3,18 +3,15 @@
 		"transform-decorators-legacy"
 	],
   	"presets": [
-        ["es2015", {"loose": true, "modules": false}], 
+        ["es2015", {"loose": true, "modules": false}],
         "react"
     ],
 	"env": {
 		"test": {
-			"plugins": [ 
-				"transform-decorators-legacy",
-				"istanbul" 
-			],
 			"presets": [
-				["es2015", {"loose": true, "modules": false}], 
-				"react"
+				["es2015", {"loose": true, "modules": false}],
+                "react",
+                "airbnb"
 			]
 		}
 	}
