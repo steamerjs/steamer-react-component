@@ -26,7 +26,7 @@ if (isKarma) {
         singleRun: true
     }, function() {
         console.log('karma test done!');
-        // opn(path.join(configWebpack.path.test, 'unit/coverage/lcov-report/index.html'));
+        opn(path.join(configWebpack.path.test, 'unit/coverage/lcov-report/index.html'));
     });
     server.start();
 }

@@ -84,6 +84,7 @@
     "less-loader": "^4.0.5",
     "lodash.merge": "^4.6.0",
     "mocha": "^4.0.1",
+    "opn": "^5.2.0",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
     "preact": "^8.2.6",

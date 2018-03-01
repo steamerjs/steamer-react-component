@@ -26,7 +26,7 @@ if (isProduction) {
 }
 else {
     // 根据约定，自动扫描js entry，约定是example/src/page/xxx/main.js 或 example/src/page/xxx/main.jsx
-    /** 
+    /**
         获取结果示例
         {
             'js/index': [path.join(configWebpack.path.src, "/page/index/main.js")],
@@ -35,7 +35,7 @@ else {
         }
      */
     entry = utils.filterJsFileByCmd(utils.getJsEntry({
-        srcPath: path.join(examplePath, "src/page"), 
+        srcPath: path.join(examplePath, "src/page"),
         fileName: "main",
         extensions: ["js", "jsx"],
         keyPrefix: "",
@@ -73,7 +73,7 @@ var config = {
         // ========================= webpack自定义配置 =========================
         // 是否显示开发环境下的生成文件
         showSource: true,
-        
+
         // 是否清理生成文件夹
         clean: true,
 
@@ -105,7 +105,7 @@ var config = {
         },
 
         alias: {
-            
+
         },
 
         // ========================= webpack entry配置 =========================
@@ -114,19 +114,19 @@ var config = {
         // 自动扫描html，配合html-res-webpack-plugin
         /**
             获取结果示例
-            [ 
-                { 
+            [
+                {
                     key: 'index',
                     path: 'path/src/page/index/index.html'
                 },
-                { 
+                {
                     key: 'spa',
                     path: 'path/src/page/spa/index.html'
                 },
-                { 
+                {
                     key: 'pindex',
                     path: 'path/src/page/pindex/index.html'
-                } 
+                }
             ]
          */
         html: utils.filterHtmlFileByCmd(utils.getHtmlEntry({
@@ -145,7 +145,7 @@ var config = {
 config.custom = {
     // webpack output
     getOutput: function() {
-        
+
         if (isProduction) {
             return {
                 library: "lib",
@@ -163,7 +163,7 @@ config.custom = {
         var module = {
             rules: []
         };
-        
+
         return module;
     },
 
@@ -177,10 +177,10 @@ config.custom = {
     // webpack plugins
     getPlugins: function() {
         var plugins = [];
-        
+
         return plugins;
     },
-        
+
     // webpack externals
     getExternals: function() {
         if (isProduction) {
