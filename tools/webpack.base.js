@@ -14,6 +14,7 @@ var config = require('../config/project'),
     isProduction = config.env === 'production';
 
 var baseConfig = {
+    mode: isProduction ? 'production' : 'development',
     context: configWebpack.path.src,
     entry: configWebpack.entry,
     output: {
@@ -31,14 +32,13 @@ var baseConfig = {
             path.join(configWebpack.path.src, 'css/sprites')
         ],
         extensions: [
-            '.ts', '.tsx', '.js', '.jsx', '.css', '.scss', 'sass', '.less', '.styl', 
+            '.ts', '.tsx', '.js', '.jsx', '.css', '.scss', 'sass', '.less', '.styl',
             '.png', '.jpg', '.jpeg', '.ico', '.ejs', '.pug', '.handlebars', '.swf', '.vue'
         ],
         alias: {}
     },
-    plugins: [
-        new webpack.NoEmitOnErrorsPlugin(),
-    ],
+    plugins: [],
+    optimization: {},
     watch: !isProduction,
     performance: {
         hints: isProduction ? 'warning' : false,
@@ -65,6 +65,7 @@ plugins.forEach((plugin) => {
 
 baseConfig.module.rules = baseConfigRules;
 baseConfig.plugins = baseConfigPlugins;
+baseConfig.optimization = require('./optimization')(config, webpack);
 
 // console.log(rules, plugins);
 

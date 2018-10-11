@@ -2,11 +2,11 @@
 
 const path = require('path');
 
-var Clean = require('clean-webpack-plugin'),
-	WriteFilePlugin = require('write-file-webpack-plugin'),
-    HappyPack = require('happypack'),
-    HtmlResWebpackPlugin = require('html-res-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+let Clean = require('clean-webpack-plugin');
+let WriteFilePlugin = require('write-file-webpack-plugin');
+let HappyPack = require('happypack');
+let HtmlResWebpackPlugin = require('html-res-webpack-plugin');
+let MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = function(config, webpack) {
 
@@ -24,18 +24,15 @@ module.exports = function(config, webpack) {
                 }
             }]
         }),
-        new ExtractTextPlugin({
-            filename: (getPath) => {
-              return getPath('css/[name].css').replace('css/js', 'css');
-            },
-            allChunks: true,
-            disable: !((isProduction || !config.webpack.extractCss))
+        new MiniCssExtractPlugin({
+            filename: `css/[name].css`,
+            chunkFilename: 'css/[name].css'
         }),
-        
+
 	];
 
 	if (isProduction) {
-		
+
 	}
 	else {
 		if (configWebpack.showSource) {
@@ -55,7 +52,7 @@ module.exports = function(config, webpack) {
                     return tpl;
                 }
             }));
-        }); 
+        });
 	}
 
 	if (configWebpack.clean) {
